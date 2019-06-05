@@ -178,7 +178,7 @@ namespace ChaosMod
 		/// </summary>
 		public static void SetCombatAttributes(this Ped ped, CombatAttributes attributes, bool enabled)
 		{
-			Function.Call(Hash.SET_PED_COMBAT_ATTRIBUTES, ped.Handle, (int) attributes, enabled);
+			Function.Call(Hash.SET_PED_COMBAT_ATTRIBUTES, ped.Handle, (int)attributes, enabled);
 		}
 
 		/// <summary>
@@ -196,6 +196,31 @@ namespace ChaosMod
 		{
 			Function.Call(Hash.SET_PED_TO_RAGDOLL, ped.Handle, timeMillis, standupMillis, ragdollType, false, false, false);
 		}
+
+		/// <summary>
+		/// Toggles (Possibly) use of Special Ability
+		/// </summary>
+		public static void ToggleSpecialAbility(this Player player, bool toggle)
+		{
+			Function.Call(Hash.ENABLE_SPECIAL_ABILITY, player.Handle, toggle);
+		}
+
+		/// <summary>
+		/// Locks Special Ability
+		/// </summary>
+		public static void LockSpecialAbility(this Hash playerModel)
+		{
+			Function.Call(Hash.SPECIAL_ABILITY_LOCK, Game.Player.Character.Model);
+		}
+
+		/// <summary>
+		/// Unocks Special Ability
+		/// </summary>
+		public static void UnlockSpecialAbility(this Hash playerModel)
+		{
+			Function.Call(Hash.SPECIAL_ABILITY_UNLOCK, Game.Player.Character.Model);
+		}
+
 	}
 
 	public static class VehicleExtension
@@ -239,7 +264,8 @@ namespace ChaosMod
 			if (rnd.NextBoolean())
 			{
 				vehicle.CustomSecondaryColor = rnd.NextColor();
-			} else
+			}
+			else
 			{
 				vehicle.ClearCustomSecondaryColor();
 				vehicle.SecondaryColor = VEHICLE_COLORS[rnd.Next(0, VEHICLE_COLORS.Length)];

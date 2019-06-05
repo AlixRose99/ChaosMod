@@ -163,6 +163,10 @@ namespace ChaosMod
 			d.Add("fire-ammo", new Commands.FireAmmo());
 			d.Add("fuel-leakage", new Commands.FuelLeakage());
 			d.Add("superman", new Commands.Superman());
+			d.Add("trip-peds", new Commands.TripPeds());
+			d.Add("ability-lock", new Commands.LockAbility());
+			d.Add("ability-unlock", new Commands.UnlockAbility());
+			d.Add("euphoria-test", new Commands.EuphoriaTest());
 			return d;
 		}
 
@@ -543,7 +547,8 @@ namespace ChaosMod
 					VehicleHash byId = VehicleHash.Adder;
 
 					// Match by ID.
-					if (ALL_VEHICLES_BY_ID.TryGetValue(vehicle, out byId)) {
+					if (ALL_VEHICLES_BY_ID.TryGetValue(vehicle, out byId))
+					{
 						return byId;
 					}
 
@@ -1030,7 +1035,8 @@ namespace ChaosMod
 
 		public float Remaining
 		{
-			get {
+			get
+			{
 				return Duration - Time;
 			}
 		}
